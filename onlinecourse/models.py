@@ -99,7 +99,7 @@ class Question(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, null=True, blank=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
     question_text = models.CharField(max_length=500)
-    grade = models.IntegerField(default=0)
+    grade = models.IntegerField(default=1)
 
     def __str__(self):
         return self.question_text
@@ -130,4 +130,4 @@ class Submission(models.Model):
     time = models.DateTimeField(default=now)
 
     def __str__(self):
-        return "Enrollment: " + str(self.enrollment)
+        return f"Submission {self.id} for enrollment {self.enrollment.id}"
